@@ -12,8 +12,7 @@ class App extends Component {
     establishments: []
   }
   
-  dev = true
-  // dev = window.location.includes('localhost')
+  dev = window.location.href.includes('localhost')
   local = 'http://localhost:3000/v1/'
   heroku = 'https://marg-finder.herokuapp.com/v1/'
 
