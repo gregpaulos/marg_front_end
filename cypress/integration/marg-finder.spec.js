@@ -23,6 +23,9 @@ describe("Marg-Finder Application", () => {
   })
 
   it("renders a minimum of 5 margs sorted by proximity when #findDrinks is clicked", () => {
+    cy.get("ul li")
+      .should("not.exist")
+
     cy.get("#findDrinks")
       .click()
 
