@@ -71,4 +71,14 @@ describe("Marg-Finder Application", () => {
       })
   })
 
+  it("has a map (from gmaps.js)", () => {
+    cy.get("#map")
+      .should("exist")
+  })
+
+  it("has at least 5 pin images rendered on the map", () => {
+    cy.get("#map img")
+      .should("have.length.at.least", 5)
+  })
+
 })
