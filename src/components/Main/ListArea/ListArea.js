@@ -4,7 +4,7 @@ const ListArea = (props) => {
     
     const list = props.establishments.map((establishment)=>{
         return (
-            <li>{establishment.name}</li>
+            <li key={establishment.id}>{establishment.name}</li>
         )
     })
 
