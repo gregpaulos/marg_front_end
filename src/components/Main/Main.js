@@ -2,11 +2,11 @@ import React from 'react';
 import Button from './Button/Button';
 import ListArea from './ListArea/ListArea';
 
-const Main = () => {
+const Main = (props) => {
     return (
         <main>
             <Button />
-            <ListArea />
+            <ListArea establishments={props.establishments} />
         </main>
     )
 }

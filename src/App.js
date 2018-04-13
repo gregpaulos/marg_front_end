@@ -14,15 +14,16 @@ class App extends Component {
   
   dev = true
   // dev = window.location.includes('localhost')
-  local = 'http://localhost:3000/'
+  local = 'http://localhost:3000/v1/'
   heroku = 'https://marg-finder.herokuapp.com/v1/'
 
   componentDidMount = () => {
-    const url = this.dev ? this.local : this.heroku 
+    const url = this.dev ? this.local : this.heroku
     fetch(url+'establishments/random/')
-      .then(response => response.json())
+      .then(response => {
+        return response.json()
+      })
       .then(data => {
-        console.log(data)
         this.setState({establishments: data})
       })
 
@@ -34,7 +35,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <Main />
+        <Main establishments={this.state.establishments}/>
       </div>
     );
   }
