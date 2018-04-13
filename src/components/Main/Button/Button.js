@@ -2,7 +2,7 @@ import React from 'react';
 
 const Button = (props) => (
     <div>
-        <button id="findDrinks">Find Margs!</button>
+        <button id="findDrinks" onClick={props.trigger}>Find Margs!</button>
     </div>
 );
 

@@ -5,7 +5,7 @@ import ListArea from './ListArea/ListArea';
 const Main = (props) => {
     return (
         <main>
-            <Button />
+            <Button trigger={props.findRandomButton}/>
             <ListArea establishments={props.establishments} />
         </main>
     )
