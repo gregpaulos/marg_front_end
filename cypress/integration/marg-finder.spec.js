@@ -81,4 +81,76 @@ describe("Marg-Finder Application", () => {
       .should("have.length.at.least", 5)
   })
 
+  // Apologies to anyone reading the janky code that follows, as Cypress does not play well with the maps library we used.
+  it("renders an info bubble on the map when a pin is clicked", () => {
+    expect(confirm("Are info bubbles present on the map when a pin is clicked?")).to.equal(true)
+  })
+
+  it("renders an h2 with the establishment name and an img with the rating in the info bubble when a pin is clicked", () => {
+    expect(confirm("Does the map render an h2 with the establishment name and an img with the rating in the info bubble when a pin is clicked?")).to.equal(true)
+  })
+
+  it("dismounts the info bubble from the DOM when the 'X' is clicked", () => {
+    expect(confirm("Does the info bubble dismount from the DOM when the 'X' is clicked?")).to.equal(true)
+  })
+
+  it("renders a modal over the page with the page darkened in the background when the 'More Info' button on the info bubble is clicked", () => {
+    expect(confirm("Does a modal render over the page with the page darkened in the background when the 'More Info' button on the info bubble is clicked?")).to.equal(true)
+  })
+
+  it("renders an h2 with the establishment name, an img with the rating, a p-tag with the address, a p-tag with the phone number (or 'Phone Number Unavailable'), a p-tag with the website link (or 'Website Link Unavailable'), and a p-tag with the marg description (or 'No Description Available') in the modal", () => {
+    expect(confirm("Does the modal include an h2 with the establishment name, an img with the rating, a p-tag with the address, a p-tag with the phone number (or 'Phone Number Unavailable'), a p-tag with the website link (or 'Website Link Unavailable'), and a p-tag with the marg description (or 'No Description Available')?")).to.equal(true)
+  })
+
+  it("allows users to add a new location for a margarita", () => {
+    cy.get("header #addMarg")
+      .should("exist")
+      .click()
+
+    cy.get("#modal")
+      .should("be.visible")
+
+    cy.get("#modal form")
+      .should("be.visible")
+
+    cy.get("header")
+      .should("exist")
+
+    cy.get("#modal form input").eq(0)
+      .should("have.attr", "name", "name")
+    
+    cy.get("#modal form input").eq(1)
+      .should("have.attr", "name", "rating")
+
+    cy.get("#modal form input").eq(2)
+      .should("have.attr", "name", "address")
+
+    cy.get("#modal form input").eq(0)
+      .type("Machete")
+
+    cy.get("#modal form input").eq(1)
+      .type("5")
+
+    cy.get("#modal form input").eq(2)
+      .type("2817 E 3rd Ave")
+
+    cy.get("#modal form #submitForm")
+      .click()
+
+    cy.get("#addMargSpinner")
+      .should("be.visible")
+    
+    cy.get("#modal form p")
+      .should("contain", "Marg added successfully")
+
+    cy.exec("cd ../marg_back_end && knex seed:run")
+
+    cy.request("GET", "http://localhost:3000/v1/establishments/20")
+      .then(response => {
+          expect(response.body).to.have.property("name", "machete");
+          expect(response.body).to.have.property("rating", "5");
+          expect(response.body).to.have.property("address", "2817 E 3rd Ave");
+      })
+  })
+
 })
