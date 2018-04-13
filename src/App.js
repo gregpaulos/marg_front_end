@@ -5,12 +5,37 @@ import './App.css';
 import Header from './components/Header';
 import Main from './components/Main/Main';
 
+
+
 class App extends Component {
+  state = {
+    establishments: []
+  }
+  
+  dev = true
+  // dev = window.location.includes('localhost')
+  local = 'http://localhost:3000/v1/'
+  heroku = 'https://marg-finder.herokuapp.com/v1/'
+
+  componentDidMount = () => {
+    const url = this.dev ? this.local : this.heroku
+    fetch(url+'establishments/random/')
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        this.setState({establishments: data})
+      })
+
+
+  }
+
+
   render() {
     return (
       <div>
         <Header />
-        <Main />
+        <Main establishments={this.state.establishments}/>
       </div>
     );
   }
