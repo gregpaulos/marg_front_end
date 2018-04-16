@@ -2,9 +2,9 @@ import React from 'react';
 
 const ListArea = (props) => {
     
-    const list = props.establishments.map((establishment)=>{
+    const list = props.establishments.map((establishment, i)=>{
         return (
-            <li key={establishment.id}>{establishment.name}, {establishment.distance}</li>
+            <li key={establishment.id} onClick={() => props.toggleModal(i)}>{establishment.name}, {establishment.distance} </li>
         )
     })
 

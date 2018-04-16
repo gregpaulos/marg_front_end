@@ -6,6 +6,7 @@ class MargMap extends Component {
         super(props);
         this.state = {
             coordinates: [],
+            infoWindows: [false, false, false, false, false]
         };
     }
 
@@ -13,6 +14,29 @@ class MargMap extends Component {
         map.setOptions({
             disableDefaultUI: true
         });
+    }
+
+    toggleInfoWindow = (i) => {
+        const {infoWindows} = this.state;
+        infoWindows[i] = !infoWindows[i];
+        this.setState({
+            infoWindows
+        });
+    }
+
+    renderInfoWindows = () => {
+        return this.props.data.map((location, i) => {
+            if (!this.state.infoWindows[i]) return null;
+            return (
+              <InfoWindow
+                key={i}
+                lat={location.lat}
+                lng={location.long}
+                content={`<h2>${location.name}</h2>`}
+                onCloseClick={() => this.toggleInfoWindow(i)}
+              />
+            );
+        })
     }
 
     render() {
@@ -35,9 +59,11 @@ class MargMap extends Component {
                     <Marker
                         key={`marker-${i}`}
                         lat={Number(location.lat)}
-                        lng={Number(location.long)} />
+                        lng={Number(location.long)}
+                        onClick={() => this.toggleInfoWindow(i)} />
                 )
             })}
+            {this.renderInfoWindows()}
             </Gmaps> }
             </div>
         );

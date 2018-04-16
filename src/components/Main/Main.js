@@ -10,7 +10,7 @@ const Main = (props) => {
             <MargMap location={props.userLocation} 
                     data={props.establishments}
                     showMap={props.showMap} />
-            <ListArea establishments={props.establishments} />
+            <ListArea establishments={props.establishments} toggleModal={props.toggleModal} />
         </main>
     )
 }
