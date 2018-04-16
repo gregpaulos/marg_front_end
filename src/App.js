@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main/Main";
+import Modal from './components/Modal/Modal';
 
 class App extends Component {
   state = {
     establishments: [],
     userLocation: {},
-    showMap: false
+    showMap: false,
+    showModal: false
   };
 
 
@@ -40,6 +42,24 @@ class App extends Component {
       });
   };
 
+  toggleModalHandler = (i) => {
+    console.log(i)
+    let {showModal} = this.state;
+    showModal = !showModal;
+    this.setState({
+      showModal
+    });
+    this.renderModals(i)
+  }
+
+  modal = '';
+
+  renderModals = (i) => {
+    this.modal = (
+      <Modal place={this.state.establishments[i]} />
+    )
+  }
+
   render() {
     return (
       <div>
@@ -49,7 +69,9 @@ class App extends Component {
           findRandomButton={this.findRandomMargs}
           userLocation={this.state.userLocation}
           showMap={this.state.showMap}
+          toggleModal={this.toggleModalHandler}
         />
+        {this.state.showModal && this.modal}
       </div>
     );
   }
