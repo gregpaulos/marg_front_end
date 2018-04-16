@@ -27,8 +27,10 @@ class App extends Component {
   heroku = "https://marg-finder.herokuapp.com/v1/";
 
   findRandomMargs = () => {
-    const url = this.dev ? this.local : this.heroku;
-    fetch(url + "establishments/random/")
+    let url = this.dev ? this.local : this.heroku;
+    url = url + "establishments/random/" + this.state.userLocation.lng + "/" + this.state.userLocation.lat
+    
+    fetch(url)
       .then(response => {
         return response.json();
       })
