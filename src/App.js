@@ -7,60 +7,66 @@ import Modal from './components/Modal/Modal';
 class App extends Component {
   state = {
     establishments: [],
-    userLocation: {},
+    userLocation: {
+      lat: 39.7575861,
+      lng: -105.00684869999999
+    },
     showMap: false,
     showModal: false
   };
 
-
   componentDidMount = () => {
     navigator.geolocation.getCurrentPosition(position => {
-      console.log(position)
-      this.setState({ userLocation: {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      } 
-    })
-  })
-}
-    
+      console.log(position);
+      this.setState({
+        userLocation: {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        }
+      });
+    });
+  };
+
   dev = window.location.href.includes("localhost");
   local = "http://localhost:3000/v1/";
   heroku = "https://marg-finder.herokuapp.com/v1/";
 
   findRandomMargs = () => {
     let url = this.dev ? this.local : this.heroku;
-    url = url + "establishments/random/" + this.state.userLocation.lng + "/" + this.state.userLocation.lat
-    
+    url =
+      url +
+      "establishments/random/" +
+      this.state.userLocation.lng +
+      "/" +
+      this.state.userLocation.lat;
+
     fetch(url)
       .then(response => {
         return response.json();
       })
       .then(data => {
-        this.setState({ 
+        this.setState({
           establishments: data,
           showMap: true
         });
       });
   };
 
-  toggleModalHandler = (i) => {
-    console.log(i)
-    let {showModal} = this.state;
+  toggleModalHandler = i => {
+    console.log(i);
+    let { showModal } = this.state;
     showModal = !showModal;
     this.setState({
       showModal
     });
-    this.renderModals(i)
-  }
+    this.renderModals(i);
+  };
 
-  modal = '';
+  modal = "";
 
-  renderModals = (i) => {
-    this.modal = (
-      <Modal place={this.state.establishments[i]} />
-    )
-  }
+  renderModals = i => {
+    this.modal = <Modal place={this.state.establishments[i]} />;
+  };
 
   render() {
     return (

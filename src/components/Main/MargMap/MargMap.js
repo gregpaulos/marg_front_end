@@ -39,13 +39,17 @@ class MargMap extends Component {
         })
     }
 
+    windowWidth = window.innerWidth;
+
+    windowHeight = window.innerHeight;
+
     render() {
         return (
            <div> 
             { this.props.showMap && 
             <Gmaps 
-            width={'600px'}
-            height={'400px'}
+            width={this.windowWidth}
+            height={this.windowHeight * .5}
             lat={this.props.location.lat}
             lng={this.props.location.lng}
             zoom={12}

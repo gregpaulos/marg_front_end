@@ -3,7 +3,7 @@ import classes from './Header.css';
 
 const Header = () => (
     <header className={classes.Header}>
-        <h1>Margarita-Finder</h1>
+        <h1>Marg*Findr</h1>
     </header>
 );
 
