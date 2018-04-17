@@ -9,6 +9,7 @@ const Modal = (props) => {
             <p>{props.place.address}</p>
             <p>{props.place.phone}</p>
             <p>{props.place.description}</p>
+            <p>Rate This Marg:</p>
             <ReactStars
             count={5}
             size={24}
