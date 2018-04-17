@@ -1,5 +1,6 @@
 import React from "react";
 import ReactStars from "react-stars";
+import classes from './ListArea.css';
 
 const ListArea = props => {
   const list = props.establishments.map((establishment, i) => {
@@ -16,8 +17,11 @@ const ListArea = props => {
     );
 
     return (
-      <li key={establishment.id} onClick={() => props.toggleModal(i)}>
-        {establishment.name}, {establishment.distance}, AVG RATING: {starRating}
+      <li key={establishment.id} onClick={() => props.toggleModal(i)} className={classes.ListItem}>
+        <p className={classes.PaddingLeft}>{establishment.name}</p>
+        <p className={classes.PaddingRight}>{establishment.distance}</p>
+        <p>AVG RATING: </p>
+        {starRating}
       </li>
     );
   });

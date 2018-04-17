@@ -70,9 +70,15 @@ class App extends Component {
 
   renderModals = i => {
     this.modal = (
-      <Modal place={this.state.establishments[i]} rateMargs={this.rateMargs} />
+      <Modal place={this.state.establishments[i]} rateMargs={this.rateMargs} toggle={this.toggleModalHandler} />
     );
   };
+
+
+  appDimensions = {
+    height: "100vh",
+    width: "100vw"
+  }
 
   rateMargs = (id, rating) => {
     console.log("id", id);
@@ -107,7 +113,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div style={this.appDimensions}>
         <Header />
         <Main
           establishments={this.state.establishments}

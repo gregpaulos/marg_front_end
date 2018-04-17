@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Gmaps, Marker, InfoWindow } from 'react-gmaps';
+import classes from './MargMap.css';
 
 class MargMap extends Component {
     constructor(props) {
@@ -45,7 +46,7 @@ class MargMap extends Component {
 
     render() {
         return (
-           <div> 
+           <div className={classes.Map}> 
             { this.props.showMap && 
             <Gmaps 
             width={this.windowWidth}
@@ -69,6 +70,9 @@ class MargMap extends Component {
             })}
             {this.renderInfoWindows()}
             </Gmaps> }
+            { !this.props.showMap &&
+            <div className={classes.placeholder}></div>
+            }
             </div>
         );
     }
