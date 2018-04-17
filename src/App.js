@@ -12,7 +12,8 @@ class App extends Component {
       lng: -105.00684869999999
     },
     showMap: false,
-    showModal: false
+    showModal: false,
+    sortedByDistance: true
   };
 
   componentDidMount = () => {
@@ -89,10 +90,26 @@ class App extends Component {
       });
   };
 
+  toggleSort = () => {
+      let sortData = this.state.establishments
+      this.state.sortedByDistance ?
+      sortData.sort(function(a, b){
+        return a.avgRating < b.avgRating;
+      })
+      :
+      sortData.sort(function(a, b){
+        return a.distance > b.distance;
+      })
+      let sortedByDistance = !this.state.sortedByDistance
+      this.setState({establishments:sortData, sortedByDistance: sortedByDistance})
+
+  }
+
   render() {
     return (
       <div>
         <Header />
+        <button onClick={this.toggleSort}> Sort this anew</button>
         <Main
           establishments={this.state.establishments}
           findRandomButton={this.findRandomMargs}
