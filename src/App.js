@@ -68,9 +68,14 @@ class App extends Component {
     this.modal = <Modal place={this.state.establishments[i]} />;
   };
 
+  appDimensions = {
+    height: "100vh",
+    width: "100vw"
+  }
+
   render() {
     return (
-      <div>
+      <div style={this.appDimensions}>
         <Header />
         <Main
           establishments={this.state.establishments}
