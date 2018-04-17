@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Header from "./components/Header";
 import Main from "./components/Main/Main";
-import Modal from './components/Modal/Modal';
+import Modal from "./components/Modal/Modal";
 
 class App extends Component {
   state = {
@@ -65,7 +65,14 @@ class App extends Component {
   modal = "";
 
   renderModals = i => {
-    this.modal = <Modal place={this.state.establishments[i]} />;
+    this.modal = (
+      <Modal place={this.state.establishments[i]} rateMargs={this.rateMargs} />
+    );
+  };
+
+  rateMargs = (id, rating) => {
+    console.log("id", id);
+    console.log("rating", rating);
   };
 
   render() {
