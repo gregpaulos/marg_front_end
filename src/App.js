@@ -73,6 +73,17 @@ class App extends Component {
   rateMargs = (id, rating) => {
     console.log("id", id);
     console.log("rating", rating);
+    let url = this.dev ? this.local : this.heroku;
+    url = url + "ratings/" + id;
+    fetch(url, { method: "post",
+      headers: {"Content-Type": "application/json"}, 
+      body: JSON.stringify({ rating: rating }) })
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        console.log(data);
+      });
   };
 
   render() {
