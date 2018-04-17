@@ -1,3 +1,8 @@
-.Main {
+.Absolute {
+    position: absolute;
+    top: 60vh;
+}
+
+.Center {
     text-align: center;
 }

@@ -6,12 +6,14 @@ import classes from './Main.css';
 
 const Main = (props) => {
     return (
-        <main className={classes.Main}>
+        <main>
             <MargMap location={props.userLocation} 
                     data={props.establishments}
                     showMap={props.showMap} />
-            <Button trigger={props.findRandomButton}/>
-            <ListArea establishments={props.establishments} toggleModal={props.toggleModal} />
+            <div className={classes.Absolute}>
+                <Button trigger={props.findRandomButton} className={classes.Center}/>
+                <ListArea establishments={props.establishments} toggleModal={props.toggleModal} className={classes.Center} />
+            </div>
         </main>
     )
 }

@@ -1,3 +1,8 @@
+.Map {
+    position: fixed;
+    top: 10vh;
+}
+
 .placeholder {
     height: 50vh;
 }

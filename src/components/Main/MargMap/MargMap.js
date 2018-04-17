@@ -46,7 +46,7 @@ class MargMap extends Component {
 
     render() {
         return (
-           <div> 
+           <div className={classes.Map}> 
             { this.props.showMap && 
             <Gmaps 
             width={this.windowWidth}
