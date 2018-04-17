@@ -45,6 +45,12 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
+        console.log('THIS IS OUR DATA', data)
+        data.sort(function(a, b){
+          return a.distance > b.distance;
+        });
+        console.log('THIS IS OUR SORTED DATA', data)
+
         this.setState({
           establishments: data,
           showMap: true
