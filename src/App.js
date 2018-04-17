@@ -65,7 +65,7 @@ class App extends Component {
   modal = "";
 
   renderModals = i => {
-    this.modal = <Modal place={this.state.establishments[i]} />;
+    this.modal = <Modal toggle={this.toggleModalHandler} place={this.state.establishments[i]} />;
   };
 
   appDimensions = {

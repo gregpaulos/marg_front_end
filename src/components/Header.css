@@ -3,6 +3,8 @@ Header {
     width: 100%;
     background-color: #303633;
     position: fixed;
+    top: 0px;
+    z-index: 1;
 }
 
 header {

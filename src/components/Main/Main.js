@@ -11,8 +11,10 @@ const Main = (props) => {
                     data={props.establishments}
                     showMap={props.showMap} />
             <div className={classes.Absolute}>
-                <Button trigger={props.findRandomButton} className={classes.Center}/>
-                <ListArea establishments={props.establishments} toggleModal={props.toggleModal} className={classes.Center} />
+                <div className={classes.Center}>
+                    <Button trigger={props.findRandomButton}/>
+                    <ListArea establishments={props.establishments} toggleModal={props.toggleModal} />
+                </div>
             </div>
         </main>
     )
