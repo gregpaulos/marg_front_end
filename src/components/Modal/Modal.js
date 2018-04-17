@@ -12,6 +12,7 @@ const Modal = (props) => {
             <ReactStars
             count={5}
             size={24}
+            half={false}
             onChange={(newRating)=>props.rateMargs(props.place.id, newRating)}
             color2={'#ffd700'}
             />
