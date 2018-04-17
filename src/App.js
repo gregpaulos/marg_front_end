@@ -109,13 +109,14 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <button onClick={this.toggleSort}> Sort this anew</button>
         <Main
           establishments={this.state.establishments}
           findRandomButton={this.findRandomMargs}
           userLocation={this.state.userLocation}
           showMap={this.state.showMap}
           toggleModal={this.toggleModalHandler}
+          toggleSort={this.toggleSort}
+          sortedByDistance={this.state.sortedByDistance}
         />
         {this.state.showModal && this.modal}
       </div>
