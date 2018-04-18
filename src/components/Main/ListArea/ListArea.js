@@ -7,21 +7,23 @@ const ListArea = props => {
     const starRating = establishment.avgRating ? (
       <ReactStars
         count={5}
-        size={24}
+        size={16}
         color2={"#ffd700"}
         value={establishment.avgRating}
         edit={false}
+        className={classes.Stars}
       />
     ) : (
-      "No Ratings Yet!"
+      <p className={classes.NoRating}>Click to Rate!</p>
     );
 
     return (
       <li key={establishment.id} onClick={() => props.toggleModal(i)} className={classes.ListItem}>
-        <p className={classes.PaddingLeft}>{establishment.name}</p>
+        <div>
+          <p className={classes.PaddingLeft}>{establishment.name}</p>
+          {starRating}
+        </div>
         <p className={classes.PaddingRight}>{establishment.distance}</p>
-        <p>AVG RATING: </p>
-        {starRating}
       </li>
     );
   });
