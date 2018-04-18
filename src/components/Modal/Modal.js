@@ -7,7 +7,7 @@ const Modal = (props) => {
     return (
         <div className={classes.Modal} onClick={() => props.toggle()}>
             <div className={classes.OuterWrapper}>
-                <div className={classes.InnerWrapper} onClick={() => {console.log("fart")}}>
+                <div className={classes.InnerWrapper} onClick={() => {console.log("clicked")}}>
                     <h2 className={classes.Charcoal}>{props.place.name}</h2>
                     <p className={classes.Charcoal}>{props.place.address}</p>
                     <p className={classes.Charcoal}>{props.place.phone}</p>
