@@ -57,6 +57,12 @@ class App extends Component {
       });
   };
 
+  toggleShowMap = () => {
+    this.setState({
+      showMap: !this.state.showMap
+    })
+  }
+
   toggleModalHandler = i => {
     console.log(i);
     let { showModal } = this.state;
@@ -132,6 +138,7 @@ class App extends Component {
           toggleModal={this.toggleModalHandler}
           toggleSort={this.toggleSort}
           sortedByDistance={this.state.sortedByDistance}
+          toggleShowMap={this.toggleShowMap}
         />
         {this.state.showModal && this.modal}
       </div>

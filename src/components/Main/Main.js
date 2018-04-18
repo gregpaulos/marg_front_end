@@ -10,7 +10,8 @@ const Main = (props) => {
         <main>
             <MargMap location={props.userLocation} 
                     data={props.establishments}
-                    showMap={props.showMap} />
+                    showMap={props.showMap}
+                    toggleMap={props.toggleShowMap} />
             <div className={classes.Absolute}>
                 <div className={classes.Center}>
                     <div className={classes.Buttons}>
