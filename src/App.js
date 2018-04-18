@@ -51,7 +51,8 @@ class App extends Component {
         });
         this.setState({
           establishments: data,
-          showMap: true
+          showMap: true,
+          sortedByDistance: true,
         });
       });
   };
@@ -93,7 +94,15 @@ class App extends Component {
       })
       .then(data => {
         console.log(data);
-      });
+      })
+      .catch(error => { console.error(error) })
+    let establishments = this.state.establishments;
+    establishments.forEach(establishment => {
+      if(establishment.id === id && establishment.avgRating === null) { establishment.avgRating = rating } 
+    })
+    this.setState({
+      establishments
+    })
   };
 
   toggleSort = () => {

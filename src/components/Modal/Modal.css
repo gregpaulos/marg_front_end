@@ -22,7 +22,8 @@
     background-color: #8BE8CB;
     padding: 10px;
     font-family: "Nunito", sans-serif;
-    border: solid 2px #303633;    
+    border: solid 2px #303633;
+    z-index: 3;    
 }
 
 h2 {

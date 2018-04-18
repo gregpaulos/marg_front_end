@@ -13,13 +13,15 @@ const Main = (props) => {
                     showMap={props.showMap} />
             <div className={classes.Absolute}>
                 <div className={classes.Center}>
-                    <Button trigger={props.findRandomButton}/>
+                    <div className={classes.Buttons}>
+                        <Button trigger={props.findRandomButton}/>
+                        {props.establishments.length > 0 
+                            ? <SortButton 
+                                toggleSort={props.toggleSort}
+                                sortedByDistance={props.sortedByDistance} /> 
+                            : ""}
+                    </div>
                     <ListArea establishments={props.establishments} toggleModal={props.toggleModal} />
-                    {props.establishments.length > 0 
-                        ? <SortButton 
-                            toggleSort={props.toggleSort}
-                            sortedByDistance={props.sortedByDistance} /> 
-                        : ""}
                 </div>
             </div>
         </main>
